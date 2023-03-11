@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+
+    id 'com.huawei.agconnect'
+}
+
+android {
+    namespace 'cn.caldow.codescanner'
+    compileSdk 33
+
+    signingConfigs {
+        release {
+            storeFile file('codescanner.jks')
+            keyAlias 'codescanner'
+            keyPassword 'ly05661265'
+            storePassword 'ly05661265'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    defaultConfig {
+        applicationId "cn.caldow.codescanner"
+        minSdk 29
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.huawei.hms:scanplus:2.10.0.301'
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+}

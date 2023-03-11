@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">我测你码</string>
+    <string name="click_window_screen">辅助点击</string>
+    <string name="accessibility_service_description">"提供辅助点击 "</string>
+</resources>
