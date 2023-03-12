@@ -8,6 +8,8 @@ android {
     namespace 'cn.caldow.codescanner'
     compileSdk 33
 
+
+
     signingConfigs {
         release {
             storeFile file('codescanner.jks')

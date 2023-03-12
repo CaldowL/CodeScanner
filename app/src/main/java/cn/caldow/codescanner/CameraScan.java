@@ -175,17 +175,22 @@ public class CameraScan extends Activity {
                         if (!getCodeTypeifQR(res.getScanType())) {
 //                            Toast.makeText(getApplicationContext(), "暂不支持商品条码", Toast.LENGTH_LONG).show();
 //                            finish();
-                            Intent jump = new Intent(Intent.ACTION_VIEW);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    String uri = null;
-                                    uri = "openjd://virtual?params={\"category\":\"jump\",\"des\":\"saoasao\"}";
-                                    jump.setData(Uri.parse(uri));
-                                    startActivity(jump);
-                                }
-                            });
-                            finish();
+//                            Intent jump = new Intent(Intent.ACTION_VIEW);
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    String uri = null;
+//                                    uri = "openjd://virtual?params={\"category\":\"jump\",\"des\":\"saoasao\"}";
+//                                    jump.setData(Uri.parse(uri));
+//                                    startActivity(jump);
+//                                }
+//                            });
+//                            finish();
+
+                            Intent jp = new Intent(this, WebBrowser.class);
+                            jp.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            jp.putExtra("url", "https://www.gds.org.cn/#/barcodeList/index?type=barcode&keyword=" + result);
+                            startActivity(jp);
                             return;
                         }
                         Toast.makeText(getApplicationContext(), "暂不支持此类型二维码", Toast.LENGTH_LONG).show();
